@@ -26,8 +26,8 @@ A **simple dark-mode book search web app** built with **FastAPI** and **vanilla 
 
 1. **Clone the repo**  
    ```bash
-   git clone <your-repo-url>
-   cd backend  
+   git clone https://github.com/erfanRmoghadam/books-searcher-FastAPI
+   cd path 
 
 2. **Create & activate virtual environment**  
     python -m venv venv

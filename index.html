@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Book Search</h1>
+    <div class="search-box">
+      <input type="text" id="query" placeholder="Type a book title, author, or publisher..." />
+      <button id="searchBtn">Send</button>
+    </div>
+    <div id="loading" class="hidden"></div>
+    <div id="resultCount" class="result-count"></div>
+    <ul id="results" class="results"></ul>
+  </div>
+
+  <script>
+    const searchBtn = document.getElementById("searchBtn");
+    const queryInput = document.getElementById("query");
+    const resultsList = document.getElementById("results");
+    const loading = document.getElementById("loading");
+    const resultCount = document.getElementById("resultCount");
+
+    async function searchBooks() {
+      const q = queryInput.value.trim();
+      if (!q) return;
+
+      resultsList.innerHTML = "";
+      resultCount.textContent = "";
+      loading.classList.remove("hidden");
+
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/search?q=${encodeURIComponent(q)}`);
+        const data = await res.json();
+        loading.classList.add("hidden");
+
+        const books = data["Search Result"];
+        resultCount.textContent = `Results: ${books.length}`;
+
+        if (books.length === 0) {
+          resultsList.innerHTML = "<li>No results found.</li>";
+        } else {
+          books.forEach(book => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${book.title}</strong> <em>by ${book.author}</em> - ${book.publisher}`;
+            resultsList.appendChild(li);
+          });
+        }
+      } catch (err) {
+        loading.classList.add("hidden");
+        resultsList.innerHTML = "<li>Error fetching results.</li>";
+      }
+    }
+
+    searchBtn.addEventListener("click", searchBooks);
+    queryInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") searchBooks();
+    });
+  </script>
+</body>
+</html>

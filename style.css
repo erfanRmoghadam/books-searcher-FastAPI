@@ -94,3 +94,29 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+.results img:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.results a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.results .cover-label {
+  color: #ffffff;
+}
+
+.results img {
+  width: 80px;
+  border-radius: 6px;
+  margin-top: 6px;
+  transition: 0.2s;
+}
+
+.results img:hover {
+  transform: scale(1.05);
+}

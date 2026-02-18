@@ -9,6 +9,7 @@ A **simple dark-mode book search web app** built with **FastAPI** and **vanilla 
 - Search books by **title**, **author**, or **publisher**
 - Minimal **dark-mode UI** with **loading animation**
 - Shows **number of search results**
+- shows **book cover image link** so you can see your search result cover easily
 - FastAPI **REST API** backend with CORS enabled
 - Easy to run locally using **Python venv**
 
@@ -47,8 +48,8 @@ A **simple dark-mode book search web app** built with **FastAPI** and **vanilla 
 
 ##  📖 Example
 
-    Search "Prentice Hall" → Shows all books published by Prentice Hall.  
-    Search "Raspberry" → Finds all Raspberry Pi related books.  
+    Search "Addison-Wesley" → Shows all books published by Addison-Wesley.  
+    Search "Design" → Finds all books with the word 'design' in their name.  
 
 ##  🔧 Notes
 

@@ -46,7 +46,14 @@
         } else {
           books.forEach(book => {
             const li = document.createElement("li");
-            li.innerHTML = `<strong>${book.title}</strong> <em>by ${book.author}</em> - ${book.publisher}`;
+            li.innerHTML = `
+            <strong>${book.title}</strong>
+            <em>by ${book.author}</em> — ${book.publisher}
+            <br>
+            <a href="${book.image_url}" target="_blank">
+              <img src="${book.image_url}" alt="Cover Image" style="width:80px; border-radius:6px; margin-top:6px;">
+            </a>
+          `;
             resultsList.appendChild(li);
           });
         }
